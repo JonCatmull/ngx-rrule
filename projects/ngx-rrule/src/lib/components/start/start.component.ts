@@ -1,5 +1,5 @@
 import {Component, OnInit, Output, forwardRef, EventEmitter} from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {formatDate} from "../../util/common";
 
@@ -11,11 +11,11 @@ import {formatDate} from "../../util/common";
 })
 export class StartComponent implements OnInit, ControlValueAccessor {
   @Output() onChange = new EventEmitter();
-  public form: FormGroup;
+  public form: UntypedFormGroup;
   public startDate;
   private propagateChange;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: UntypedFormBuilder) {}
 
   ngOnInit() {
     this.form = this.formBuilder.group({

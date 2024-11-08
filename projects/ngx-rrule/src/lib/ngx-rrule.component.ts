@@ -1,5 +1,5 @@
 import {Component, forwardRef, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import { ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, UntypedFormBuilder, UntypedFormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NgxRruleService } from './ngx-rrule.service';
 import { computeRRule } from '../lib/util/computeRRule/fromString/computeRRule';
 import {formatDate, getDateParts} from '../lib/util/common';
@@ -17,9 +17,9 @@ export class NgxRruleComponent implements OnInit, OnChanges, ControlValueAccesso
   @Input() endAt;
   @Input() frequency;
   @Input() tz;
-  public form: FormGroup;
+  public form: UntypedFormGroup;
   private propagateChange;
-  constructor(private formBuilder: FormBuilder,
+  constructor(private formBuilder: UntypedFormBuilder,
     private service: NgxRruleService) { }
 
   ngOnInit() {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import * as moment from 'moment';
 
 @Component({
@@ -8,7 +8,7 @@ import * as moment from 'moment';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  form: FormGroup;
+  form: UntypedFormGroup;
   rRule;
   testRule;
 
@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   hideEnd = false;
   timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: UntypedFormBuilder) { }
 
   ngOnInit() {
     const startDate = moment().startOf('month').startOf('day').format('YYYYMMDD');
