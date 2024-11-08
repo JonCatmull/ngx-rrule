@@ -17,5 +17,7 @@
     "lodash": "^4.17.11",
     "rrule": "^2.6.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "tslib": "^2.0.0"
+  }
 }
