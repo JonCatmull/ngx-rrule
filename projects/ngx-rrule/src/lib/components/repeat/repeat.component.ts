@@ -1,5 +1,5 @@
 import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormBuilder, FormGroup } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 
 @Component({
   selector: 'ngx-repeat',
@@ -9,10 +9,10 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormBuilder, FormGroup } from 
 })
 export class RepeatComponent implements OnInit, ControlValueAccessor {
   @Output() onChange = new EventEmitter();
-  public form: FormGroup;
+  public form: UntypedFormGroup;
   @Input() frequency;
   private propagateChange;
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: UntypedFormBuilder) { }
 
   ngOnInit() {
     this.form = this.formBuilder.group({

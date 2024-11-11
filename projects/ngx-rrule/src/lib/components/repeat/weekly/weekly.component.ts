@@ -1,5 +1,5 @@
 import {Component, OnInit, Output, Input, forwardRef, EventEmitter, OnChanges, SimpleChanges} from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import * as _ from 'lodash';
 
@@ -11,10 +11,10 @@ import * as _ from 'lodash';
 })
 export class WeeklyComponent implements OnInit, ControlValueAccessor {
   @Output() onChange = new EventEmitter();
-  public weeklyForm: FormGroup;
+  public weeklyForm: UntypedFormGroup;
   private propagateChange;
   public days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: UntypedFormBuilder) {}
 
   ngOnInit() {
     this.weeklyForm = this.formBuilder.group({
