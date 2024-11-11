@@ -1,13 +1,25 @@
-import {Component, OnInit, Output, forwardRef, EventEmitter} from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {formatDate} from "../../util/common";
+import {
+  Component,
+  OnInit,
+  Output,
+  forwardRef,
+  EventEmitter,
+} from "@angular/core";
+import { UntypedFormBuilder, UntypedFormGroup } from "@angular/forms";
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
+import { formatDate } from "../../util/common";
 
 @Component({
-  selector: 'ngx-start',
-  templateUrl: './start.component.html',
-  styleUrls: ['./start.component.css'],
-  providers: [{provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => StartComponent), multi: true}]
+  selector: "ngx-start",
+  templateUrl: "./start.component.html",
+  styleUrls: ["./start.component.css"],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => StartComponent),
+      multi: true,
+    },
+  ],
 })
 export class StartComponent implements OnInit, ControlValueAccessor {
   @Output() onChange = new EventEmitter();
@@ -19,7 +31,7 @@ export class StartComponent implements OnInit, ControlValueAccessor {
 
   ngOnInit() {
     this.form = this.formBuilder.group({
-      startDate: ''
+      startDate: "",
     });
 
     setTimeout(() => {
@@ -32,25 +44,24 @@ export class StartComponent implements OnInit, ControlValueAccessor {
 
   writeValue = (input: any): void => {
     this.form.patchValue({
-      startDate: new Date(input.onDate.date)
+      startDate: new Date(input.onDate.date),
     });
-  }
+  };
 
   registerOnChange(fn: any): void {
     this.propagateChange = fn;
   }
 
-  registerOnTouched(fn: any): void {
-  }
+  registerOnTouched(fn: any): void {}
 
   onFormChange = () => {
     if (this.propagateChange) {
       this.propagateChange({
         onDate: {
-          date: new Date(this.form.value.startDate)
-        }
+          date: new Date(this.form.value.startDate),
+        },
       });
     }
     this.onChange.emit();
-  }
+  };
 }

@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { NgxRruleComponent } from './ngx-rrule.component';
+import { NgxRruleComponent } from "./ngx-rrule.component";
 
-describe('NgxRruleComponent', () => {
+describe("NgxRruleComponent", () => {
   let component: NgxRruleComponent;
   let fixture: ComponentFixture<NgxRruleComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NgxRruleComponent ]
-    })
-    .compileComponents();
+      declarations: [NgxRruleComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('NgxRruleComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

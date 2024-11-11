@@ -3,8 +3,8 @@ const computeMonthlyOnDay = (data, rruleObj) => {
     return data.repeat.monthly.on.day;
   }
 
-  if (typeof rruleObj.bymonthday === 'number') {
-    return rruleObj.bymonthday
+  if (typeof rruleObj.bymonthday === "number") {
+    return rruleObj.bymonthday;
   }
 
   return rruleObj.bymonthday[0];

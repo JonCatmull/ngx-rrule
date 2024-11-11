@@ -1,29 +1,24 @@
-import computeYearly from './computeYearly';
-import computeMonthly from './computeMonthly';
-import computeWeekly from './computeWeekly';
-import computeDaily from './computeDaily';
-import computeHourly from './computeHourly';
+import computeYearly from "./computeYearly";
+import computeMonthly from "./computeMonthly";
+import computeWeekly from "./computeWeekly";
+import computeDaily from "./computeDaily";
+import computeHourly from "./computeHourly";
 
-const computeRepeat = ({
-  frequency,
-  yearly,
-  monthly,
-  weekly, interval
-}) => {
+const computeRepeat = ({ frequency, yearly, monthly, weekly, interval }) => {
   switch (frequency) {
-    case 'Yearly': {
+    case "Yearly": {
       return computeYearly(yearly);
     }
-    case 'Monthly': {
+    case "Monthly": {
       return computeMonthly(monthly);
     }
-    case 'Weekly': {
+    case "Weekly": {
       return computeWeekly(weekly);
     }
-    case 'Daily': {
+    case "Daily": {
       return computeDaily(interval);
     }
-    case 'Hourly': {
+    case "Hourly": {
       return computeHourly(interval);
     }
     default:

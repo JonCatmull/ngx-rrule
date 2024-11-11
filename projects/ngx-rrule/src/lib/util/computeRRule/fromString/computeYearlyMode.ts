@@ -4,10 +4,10 @@ const computeYearlyMode = (data, rruleObj) => {
   }
 
   if (rruleObj.bymonthday) {
-    return 'on';
+    return "on";
   }
 
-  return 'on the';
+  return "on the";
 };
 
 export default computeYearlyMode;

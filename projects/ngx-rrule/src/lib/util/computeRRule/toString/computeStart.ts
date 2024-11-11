@@ -1,4 +1,4 @@
-import {getDateParts, isValidDate} from '../../common'
+import { getDateParts, isValidDate } from "../../common";
 
 const computeStart = (date) => {
   let start: any = {};
@@ -11,7 +11,9 @@ const computeStart = (date) => {
     }
     const dateParts = getDateParts(start);
     return {
-      dtstart: new Date(Date.UTC(dateParts.year, dateParts.month - 1, dateParts.day, 0, 0))
+      dtstart: new Date(
+        Date.UTC(dateParts.year, dateParts.month - 1, dateParts.day, 0, 0),
+      ),
     };
   }
 

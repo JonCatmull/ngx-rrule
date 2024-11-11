@@ -1,16 +1,36 @@
-import {Component, forwardRef, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import { ControlValueAccessor, UntypedFormBuilder, UntypedFormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { NgxRruleService } from './ngx-rrule.service';
-import { computeRRule } from '../lib/util/computeRRule/fromString/computeRRule';
-import {formatDate, getDateParts} from '../lib/util/common';
+import {
+  Component,
+  forwardRef,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from "@angular/core";
+import {
+  ControlValueAccessor,
+  UntypedFormBuilder,
+  UntypedFormGroup,
+  NG_VALUE_ACCESSOR,
+} from "@angular/forms";
+import { NgxRruleService } from "./ngx-rrule.service";
+import { computeRRule } from "../lib/util/computeRRule/fromString/computeRRule";
+import { formatDate, getDateParts } from "../lib/util/common";
 
 @Component({
-  selector: 'ngx-rrule',
-  templateUrl: './ngx-rrule.component.html',
+  selector: "ngx-rrule",
+  templateUrl: "./ngx-rrule.component.html",
   styles: [],
-  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => NgxRruleComponent), multi: true }]
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => NgxRruleComponent),
+      multi: true,
+    },
+  ],
 })
-export class NgxRruleComponent implements OnInit, OnChanges, ControlValueAccessor {
+export class NgxRruleComponent
+  implements OnInit, OnChanges, ControlValueAccessor
+{
   @Input() hideStart = false;
   @Input() hideEnd = false;
   @Input() startAt;
@@ -19,50 +39,55 @@ export class NgxRruleComponent implements OnInit, OnChanges, ControlValueAccesso
   @Input() tz;
   public form: UntypedFormGroup;
   private propagateChange;
-  constructor(private formBuilder: UntypedFormBuilder,
-    private service: NgxRruleService) { }
+  constructor(
+    private formBuilder: UntypedFormBuilder,
+    private service: NgxRruleService,
+  ) {}
 
   ngOnInit() {
     const params: any = {
       start: {},
       repeat: {},
       end: {
-        mode: 'Never'
-      }
+        mode: "Never",
+      },
     };
-
 
     if (this.endAt) {
       params.end = {
-        mode: 'On date',
+        mode: "On date",
         onDate: {
-          date: getDateParts(this.endAt)
-        }
-      }
+          date: getDateParts(this.endAt),
+        },
+      };
     }
 
     if (this.startAt) {
       params.start = {
         onDate: {
-          date: getDateParts(this.startAt)
-        }
-      }
+          date: getDateParts(this.startAt),
+        },
+      };
     }
 
     this.form = this.formBuilder.group(params);
 
-    this.form.valueChanges.subscribe(() => setTimeout(() => {
-      this.onFormChange();
-    }, 100));
+    this.form.valueChanges.subscribe(() =>
+      setTimeout(() => {
+        this.onFormChange();
+      }, 100),
+    );
   }
 
   writeValue = (input: any): void => {
     const config: any = {};
-    const configureFrequency = () => (config.repeat ? config.repeat[0] : 'Yearly');
-    const configureYearly = () => (config.yearly || 'on');
-    const configureMonthly = () => (config.monthly || 'on');
-    const configureEnd = () => (config.end ? config.end[0] : 'Never');
-    const configureHideStart = () => (typeof config.hideStart === 'undefined' ? true : config.hideStart);
+    const configureFrequency = () =>
+      config.repeat ? config.repeat[0] : "Yearly";
+    const configureYearly = () => config.yearly || "on";
+    const configureMonthly = () => config.monthly || "on";
+    const configureEnd = () => (config.end ? config.end[0] : "Never");
+    const configureHideStart = () =>
+      typeof config.hideStart === "undefined" ? true : config.hideStart;
     // const uniqueRruleId = isEmpty(id) ? uniqueId('rrule-') : id;
     const init_data = {
       start: {
@@ -76,13 +101,13 @@ export class NgxRruleComponent implements OnInit, OnChanges, ControlValueAccesso
         yearly: {
           mode: configureYearly(),
           on: {
-            month: 'Jan',
+            month: "Jan",
             day: 1,
           },
           onThe: {
-            month: 'Jan',
-            day: 'Monday',
-            which: 'First',
+            month: "Jan",
+            day: "Monday",
+            which: "First",
           },
           options: {
             // modes: config.yearly,
@@ -95,8 +120,8 @@ export class NgxRruleComponent implements OnInit, OnChanges, ControlValueAccesso
             day: 1,
           },
           onThe: {
-            day: 'Monday',
-            which: 'First',
+            day: "Monday",
+            which: "First",
           },
           options: {
             // modes: config.monthly,
@@ -150,17 +175,15 @@ export class NgxRruleComponent implements OnInit, OnChanges, ControlValueAccesso
       error: null,
     };
 
-
     const data = computeRRule(init_data, input);
     this.form.patchValue(data);
-  }
+  };
 
   registerOnChange(fn: any): void {
     this.propagateChange = fn;
   }
 
-  registerOnTouched(fn: any): void {
-  }
+  registerOnTouched(fn: any): void {}
 
   onFormChange = () => {
     let rRule;
@@ -172,21 +195,24 @@ export class NgxRruleComponent implements OnInit, OnChanges, ControlValueAccesso
       if (this.hideEnd && !this.endAt) {
         params.end = null;
       }
-      rRule = this.service.computeRRule({ ...params, options: {tz: this.tz} });
+      rRule = this.service.computeRRule({
+        ...params,
+        options: { tz: this.tz },
+      });
     } catch (err) {
       console.error(err);
     }
     if (this.propagateChange) {
       this.propagateChange({
         raw: this.form.value,
-        rRule
+        rRule,
       });
     }
-  }
+  };
 
   ngOnChanges(changes: SimpleChanges) {
     setTimeout(() => {
       this.onFormChange();
-    }, 10)
+    }, 10);
   }
 }

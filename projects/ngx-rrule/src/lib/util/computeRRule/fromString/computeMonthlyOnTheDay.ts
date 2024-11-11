@@ -3,38 +3,40 @@ const computeMonthlyOnTheDay = (data, rruleObj) => {
     return data.repeat.monthly.onThe.day;
   }
 
-  const weekdays = rruleObj.byweekday.map(weekday => weekday.weekday).join(',');
+  const weekdays = rruleObj.byweekday
+    .map((weekday) => weekday.weekday)
+    .join(",");
 
   switch (weekdays) {
-    case '0': {
-      return 'Monday';
+    case "0": {
+      return "Monday";
     }
-    case '1': {
-      return 'Tuesday';
+    case "1": {
+      return "Tuesday";
     }
-    case '2': {
-      return 'Wednesday';
+    case "2": {
+      return "Wednesday";
     }
-    case '3': {
-      return 'Thursday';
+    case "3": {
+      return "Thursday";
     }
-    case '4': {
-      return 'Friday';
+    case "4": {
+      return "Friday";
     }
-    case '5': {
-      return 'Saturday';
+    case "5": {
+      return "Saturday";
     }
-    case '6': {
-      return 'Sunday';
+    case "6": {
+      return "Sunday";
     }
-    case '0,1,2,3,4,5,6': {
-      return 'Day';
+    case "0,1,2,3,4,5,6": {
+      return "Day";
     }
-    case '0,1,2,3,4': {
-      return 'Weekday';
+    case "0,1,2,3,4": {
+      return "Weekday";
     }
-    case '5,6': {
-      return 'Weekend day';
+    case "5,6": {
+      return "Weekend day";
     }
     default: {
       return data.repeat.monthly.onThe.day;

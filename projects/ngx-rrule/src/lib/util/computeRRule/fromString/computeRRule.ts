@@ -1,28 +1,28 @@
-import { rrulestr as RRuleObjectFromString } from 'rrule';
+import { rrulestr as RRuleObjectFromString } from "rrule";
 
-import { DATE_TIME_FORMAT } from '../constant';
-import computeStartOnDate from './computeStartOnDate';
-import computeFrequency from './computeFrequency';
-import computeYearlyMode from './computeYearlyMode';
-import computeYearlyOnMonth from './computeYearlyOnMonth';
-import computeYearlyOnMonthday from './computeYearlyOnMonthday';
-import computeYearlyOnTheMonth from './computeYearlyOnTheMonth';
-import computeYearlyOnTheMonthday from './computeYearlyOnTheMonthday';
-import computeYearlyOnTheWhich from './computeYearlyOnTheWhich';
-import computeMonthlyMode from './computeMonthlyMode';
-import computeMonthlyInterval from './computeMonthlyInterval';
-import computeMonthlyOnDay from './computeMonthlyOnDay';
-import computeMonthlyOnTheDay from './computeMonthlyOnTheDay';
-import computeMonthlyOnTheWhich from './computeMonthlyOnTheWhich';
-import computeWeeklyInterval from './computeWeeklyInterval';
-import computeWeeklyDays from './computeWeeklyDays';
-import computeWeekStartDay from './computeWeekStartDay';
-import computeDailyInterval from './computeDailyInterval';
-import computeHourlyInterval from './computeHourlyInterval';
-import computeEndMode from './computeEndMode';
-import computeEndAfter from './computeEndAfter';
-import computeEndOnDate from './computeEndOnDate';
-import {formatDate} from "../../common";
+import { DATE_TIME_FORMAT } from "../constant";
+import computeStartOnDate from "./computeStartOnDate";
+import computeFrequency from "./computeFrequency";
+import computeYearlyMode from "./computeYearlyMode";
+import computeYearlyOnMonth from "./computeYearlyOnMonth";
+import computeYearlyOnMonthday from "./computeYearlyOnMonthday";
+import computeYearlyOnTheMonth from "./computeYearlyOnTheMonth";
+import computeYearlyOnTheMonthday from "./computeYearlyOnTheMonthday";
+import computeYearlyOnTheWhich from "./computeYearlyOnTheWhich";
+import computeMonthlyMode from "./computeMonthlyMode";
+import computeMonthlyInterval from "./computeMonthlyInterval";
+import computeMonthlyOnDay from "./computeMonthlyOnDay";
+import computeMonthlyOnTheDay from "./computeMonthlyOnTheDay";
+import computeMonthlyOnTheWhich from "./computeMonthlyOnTheWhich";
+import computeWeeklyInterval from "./computeWeeklyInterval";
+import computeWeeklyDays from "./computeWeeklyDays";
+import computeWeekStartDay from "./computeWeekStartDay";
+import computeDailyInterval from "./computeDailyInterval";
+import computeHourlyInterval from "./computeHourlyInterval";
+import computeEndMode from "./computeEndMode";
+import computeEndAfter from "./computeEndAfter";
+import computeEndOnDate from "./computeEndOnDate";
+import { formatDate } from "../../common";
 
 export const computeRRule = (data, rrule) => {
   if (!rrule) {
@@ -110,4 +110,3 @@ export const computeRRule = (data, rrule) => {
 
   return newDataObj;
 };
-

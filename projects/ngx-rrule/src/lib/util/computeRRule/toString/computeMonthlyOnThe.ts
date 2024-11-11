@@ -1,21 +1,21 @@
-import {Weekday} from 'rrule';
+import { Weekday } from "rrule";
 const computeMonthlyOnThe = (onThe) => {
   let repeat: any = {};
 
   switch (onThe.which) {
-    case 'First':
+    case "First":
       repeat.bysetpos = 1;
       break;
-    case 'Second':
+    case "Second":
       repeat.bysetpos = 2;
       break;
-    case 'Third':
+    case "Third":
       repeat.bysetpos = 3;
       break;
-    case 'Fourth':
+    case "Fourth":
       repeat.bysetpos = 4;
       break;
-    case 'Last':
+    case "Last":
       repeat.bysetpos = -1;
       break;
     default:
@@ -23,34 +23,34 @@ const computeMonthlyOnThe = (onThe) => {
   }
 
   switch (onThe.day) {
-    case 'Monday':
+    case "Monday":
       repeat.byweekday = [0];
       break;
-    case 'Tuesday':
+    case "Tuesday":
       repeat.byweekday = [1];
       break;
-    case 'Wednesday':
+    case "Wednesday":
       repeat.byweekday = [2];
       break;
-    case 'Thursday':
+    case "Thursday":
       repeat.byweekday = [3];
       break;
-    case 'Friday':
+    case "Friday":
       repeat.byweekday = [4];
       break;
-    case 'Saturday':
+    case "Saturday":
       repeat.byweekday = [5];
       break;
-    case 'Sunday':
+    case "Sunday":
       repeat.byweekday = [6];
       break;
-    case 'Day':
+    case "Day":
       repeat.byweekday = [0, 1, 2, 3, 4, 5, 6];
       break;
-    case 'Weekday':
+    case "Weekday":
       repeat.byweekday = [0, 1, 2, 3, 4];
       break;
-    case 'Weekend day':
+    case "Weekend day":
       repeat.byweekday = [5, 6];
       break;
     default:
@@ -58,7 +58,9 @@ const computeMonthlyOnThe = (onThe) => {
   }
 
   if (repeat.byweekday && repeat.bysetpos) {
-    repeat.byweekday = repeat.byweekday.map(r => new Weekday(r, repeat.bysetpos));
+    repeat.byweekday = repeat.byweekday.map(
+      (r) => new Weekday(r, repeat.bysetpos),
+    );
   }
   return repeat;
 };

@@ -6,7 +6,7 @@ const computeWeeklyDays = (data, rruleObj) => {
   }
 
   if (rruleObj.byweekday) {
-    weekdays = rruleObj.byweekday.map(weekday => weekday.weekday);
+    weekdays = rruleObj.byweekday.map((weekday) => weekday.weekday);
   }
 
   return {

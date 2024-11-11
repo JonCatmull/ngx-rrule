@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { WeeklyComponent } from './weekly.component';
+import { WeeklyComponent } from "./weekly.component";
 
-describe('WeeklyComponent', () => {
+describe("WeeklyComponent", () => {
   let component: WeeklyComponent;
   let fixture: ComponentFixture<WeeklyComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WeeklyComponent ]
-    })
-    .compileComponents();
+      declarations: [WeeklyComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('WeeklyComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

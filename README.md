@@ -1,4 +1,5 @@
 # NgxRrule
+
 > Recurrence rules generator form control for Angular
 
 > Inspired and partially forked from https://github.com/Fafruch/react-rrule-generator
@@ -12,16 +13,19 @@
 This is [Angular](https://angular.io/) form control using [Bootstrap](https://github.com/twbs/bootstrap) styling. It's built with the help of a great [rrule.js](https://github.com/jakubroztocil/rrule) library.
 
 It also uses:
-* [lodash](https://github.com/lodash/lodash)
-* [moment](https://github.com/moment/moment)
-* [ng-bootstrap](https://ng-bootstrap.github.io/#/components/datepicker/overview)
+
+- [lodash](https://github.com/lodash/lodash)
+- [moment](https://github.com/moment/moment)
+- [ng-bootstrap](https://ng-bootstrap.github.io/#/components/datepicker/overview)
 
 ## Demo
+
 https://kumar-muthu.github.io/ngx-rrule/
 
 ## Installation and Docs
 
 #### Install
+
 ```
  $ npm i ngx-rrule @ng-bootstrap/ng-bootstrap rrule bootstrap
 ```
@@ -29,63 +33,62 @@ https://kumar-muthu.github.io/ngx-rrule/
 #### Import NgxRruleModule in your app:
 
 ```js
-import {NgxRruleModule} from 'ngx-rrule';
+import { NgxRruleModule } from "ngx-rrule";
 
 @NgModule({
-    imports: [NgxRruleModule]
+  imports: [NgxRruleModule],
 })
 export class AppModule {}
 ```
 
 #### style.scss
+
 Optionally, this can be added to styles section of angular.json
+
 ```css
-@import '~bootstrap/dist/css/bootstrap.css';
+@import "~bootstrap/dist/css/bootstrap.css";
 ```
 
 #### app.component.html
+
 ```html
 <form [formGroup]="myform">
-  <ngx-rrule formControlName="testRule"
-             [hideStart]="false"
-             [hideEnd]="false"
-             tz="America/New_York"
-             [frequency]="['Daily','Monthly','Weekly', 'Yearly']"></ngx-rrule>
+  <ngx-rrule formControlName="testRule" [hideStart]="false" [hideEnd]="false" tz="America/New_York" [frequency]="['Daily','Monthly','Weekly', 'Yearly']"></ngx-rrule>
 </form>
 ```
 
 #### app.component.ts
+
 ```ts
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup } from "@angular/forms";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"],
 })
 export class AppComponent implements OnInit {
   myform: FormGroup;
-  constructor(private formBuilder: FormBuilder) { }
-  
+  constructor(private formBuilder: FormBuilder) {}
+
   ngOnInit() {
     this.myform = this.formBuilder.group({
-      testRule: ''
+      testRule: "",
     });
 
     this.myform.valueChanges.subscribe(() => {
       const rRuleFormValue = this.myform.value.testRule;
-      
+
       // Get the rrule object.
       // This is an instance of RRule. Refer to https://github.com/jakubroztocil/rrule on how to use it
       console.log(rRuleFormValue.rRule);
-      
+
       // Optional - Raw value of the ngxRrule used internally
       console.log(rRuleFormValue.raw);
     });
   }
 }
-
 ```
 
 ### Options
@@ -132,5 +135,6 @@ export class AppComponent implements OnInit {
         </tbody>
 </table>
 
-## License 
+## License
+
 MIT

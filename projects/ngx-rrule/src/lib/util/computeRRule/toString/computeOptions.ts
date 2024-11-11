@@ -1,4 +1,4 @@
-import {RRule} from 'rrule';
+import { RRule } from "rrule";
 
 const computeOptions = ({ hideStart, weekStartsOnSunday, tz }) => {
   const options: any = {};

@@ -1,4 +1,4 @@
-import {RRule} from 'rrule';
+import { RRule } from "rrule";
 
 const computeHourly = (interval) => ({
   freq: RRule.HOURLY,

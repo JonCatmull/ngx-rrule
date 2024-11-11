@@ -1,18 +1,36 @@
-import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import {
+  Component,
+  EventEmitter,
+  forwardRef,
+  Input,
+  OnInit,
+  Output,
+} from "@angular/core";
+import {
+  ControlValueAccessor,
+  NG_VALUE_ACCESSOR,
+  UntypedFormBuilder,
+  UntypedFormGroup,
+} from "@angular/forms";
 
 @Component({
-  selector: 'ngx-repeat',
-  templateUrl: './repeat.component.html',
-  styleUrls: ['./repeat.component.css'],
-  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => RepeatComponent), multi: true }]
+  selector: "ngx-repeat",
+  templateUrl: "./repeat.component.html",
+  styleUrls: ["./repeat.component.css"],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => RepeatComponent),
+      multi: true,
+    },
+  ],
 })
 export class RepeatComponent implements OnInit, ControlValueAccessor {
   @Output() onChange = new EventEmitter();
   public form: UntypedFormGroup;
   @Input() frequency;
   private propagateChange;
-  constructor(private formBuilder: UntypedFormBuilder) { }
+  constructor(private formBuilder: UntypedFormBuilder) {}
 
   ngOnInit() {
     this.form = this.formBuilder.group({
@@ -22,7 +40,7 @@ export class RepeatComponent implements OnInit, ControlValueAccessor {
       hourly: {},
       daily: {},
       interval: 1,
-      frequency: 'Weekly'
+      frequency: "Weekly",
     });
 
     this.form.valueChanges.subscribe(() => {
@@ -37,26 +55,26 @@ export class RepeatComponent implements OnInit, ControlValueAccessor {
   onOptionChange() {
     this.form.patchValue({
       yearly: {
-        mode: 'on',
+        mode: "on",
         on: {
-          month: 'Jan',
-          day: '1'
+          month: "Jan",
+          day: "1",
         },
         onThe: {
-          which: 'First',
-          day: 'Monday',
-          month: 'Jan'
-        }
+          which: "First",
+          day: "Monday",
+          month: "Jan",
+        },
       },
       monthly: {
-        mode: 'on',
+        mode: "on",
         on: {
-          day: 1
+          day: 1,
         },
         onThe: {
-          which: 'First',
-          day: 'Monday'
-        }
+          which: "First",
+          day: "Monday",
+        },
       },
       weekly: {
         interval: 1,
@@ -68,37 +86,40 @@ export class RepeatComponent implements OnInit, ControlValueAccessor {
           fri: false,
           sat: false,
           sun: false,
-        }
+        },
       },
       hourly: {
-        interval: 1
+        interval: 1,
       },
       daily: {
-        interval: 1
-      }
+        interval: 1,
+      },
     });
     this.onFormChange();
   }
 
   writeValue = (input: any): void => {
-    this.form.patchValue({ ...input, interval: input[input.frequency.toLowerCase()].interval });
-  }
+    this.form.patchValue({
+      ...input,
+      interval: input[input.frequency.toLowerCase()].interval,
+    });
+  };
 
   registerOnChange(fn: any): void {
     this.propagateChange = fn;
   }
 
-  registerOnTouched(fn: any): void {
-  }
+  registerOnTouched(fn: any): void {}
 
   onFormChange = () => {
     const params = {
-      ...this.form.value
+      ...this.form.value,
     };
-    params[this.form.value.frequency.toLowerCase()].interval = this.form.value.interval;
+    params[this.form.value.frequency.toLowerCase()].interval =
+      this.form.value.interval;
     if (this.propagateChange) {
       this.propagateChange(params);
     }
     this.onChange.emit();
-  }
+  };
 }

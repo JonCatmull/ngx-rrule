@@ -3,23 +3,26 @@ const computeMonthlyOnTheWhich = (data, rruleObj) => {
     return data.repeat.monthly.onThe.which;
   }
 
-  const bysetpos = (typeof rruleObj.bysetpos === 'number') ? rruleObj.bysetpos : rruleObj.bysetpos[0];
+  const bysetpos =
+    typeof rruleObj.bysetpos === "number"
+      ? rruleObj.bysetpos
+      : rruleObj.bysetpos[0];
 
   switch (bysetpos) {
     case 1: {
-      return 'First';
+      return "First";
     }
     case 2: {
-      return 'Second';
+      return "Second";
     }
     case 3: {
-      return 'Third';
+      return "Third";
     }
     case 4: {
-      return 'Fourth';
+      return "Fourth";
     }
     case -1: {
-      return 'Last';
+      return "Last";
     }
     default: {
       return data.repeat.monthly.onThe.which;

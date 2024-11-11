@@ -1,19 +1,34 @@
-import {Component, OnInit, Output, Input, forwardRef, EventEmitter, OnChanges, SimpleChanges} from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import * as _ from 'lodash';
+import {
+  Component,
+  OnInit,
+  Output,
+  Input,
+  forwardRef,
+  EventEmitter,
+  OnChanges,
+  SimpleChanges,
+} from "@angular/core";
+import { UntypedFormBuilder, UntypedFormGroup } from "@angular/forms";
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
+import * as _ from "lodash";
 
 @Component({
-  selector: 'ngx-weekly',
-  templateUrl: './weekly.component.html',
-  styleUrls: ['./weekly.component.css'],
-  providers: [{provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => WeeklyComponent), multi: true}]
+  selector: "ngx-weekly",
+  templateUrl: "./weekly.component.html",
+  styleUrls: ["./weekly.component.css"],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => WeeklyComponent),
+      multi: true,
+    },
+  ],
 })
 export class WeeklyComponent implements OnInit, ControlValueAccessor {
   @Output() onChange = new EventEmitter();
   public weeklyForm: UntypedFormGroup;
   private propagateChange;
-  public days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  public days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   constructor(private formBuilder: UntypedFormBuilder) {}
 
   ngOnInit() {
@@ -37,29 +52,30 @@ export class WeeklyComponent implements OnInit, ControlValueAccessor {
     }, 100);
   }
 
-
   writeValue = (input: any): void => {
-    this.weeklyForm.patchValue({...input.days, weeklyInterval: input.interval});
-  }
+    this.weeklyForm.patchValue({
+      ...input.days,
+      weeklyInterval: input.interval,
+    });
+  };
 
   registerOnChange(fn: any): void {
     this.propagateChange = fn;
   }
 
-  registerOnTouched(fn: any): void {
-  }
+  registerOnTouched(fn: any): void {}
 
   onFormChange = () => {
     if (this.propagateChange) {
-      const  value = {
+      const value = {
         interval: 0,
-        days: []
+        days: [],
       };
 
       value.interval = this.weeklyForm.value.weeklyInterval;
-      value.days = _.omit(this.weeklyForm.value, ['weeklyInterval']);
+      value.days = _.omit(this.weeklyForm.value, ["weeklyInterval"]);
       this.propagateChange(value);
       this.onChange.emit();
     }
-  }
+  };
 }

@@ -1,19 +1,19 @@
 const computeFrequency = (data, rruleObj) => {
   switch (rruleObj.freq) {
     case 0: {
-      return 'Yearly';
+      return "Yearly";
     }
     case 1: {
-      return 'Monthly';
+      return "Monthly";
     }
     case 2: {
-      return 'Weekly';
+      return "Weekly";
     }
     case 3: {
-      return 'Daily';
+      return "Daily";
     }
     case 4: {
-      return 'Hourly';
+      return "Hourly";
     }
     default: {
       return data.repeat.frequency;
