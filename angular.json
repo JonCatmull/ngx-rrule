@@ -54,7 +54,10 @@
               "projects/tester/src/favicon.ico",
               "projects/tester/src/assets"
             ],
-            "styles": ["projects/tester/src/styles.scss"],
+            "styles": [
+              "@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "projects/tester/src/styles.scss"
+            ],
             "scripts": [],
             "vendorChunk": true,
             "extractLicenses": false,
@@ -117,7 +120,10 @@
             "polyfills": "projects/tester/src/polyfills.ts",
             "tsConfig": "projects/tester/tsconfig.spec.json",
             "karmaConfig": "projects/tester/karma.conf.js",
-            "styles": ["projects/tester/src/styles.css"],
+            "styles": [
+              "@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "projects/tester/src/styles.css"
+            ],
             "scripts": [],
             "assets": [
               "projects/tester/src/favicon.ico",

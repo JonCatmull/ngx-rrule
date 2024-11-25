@@ -1,2 +1,105 @@
 /* You can add global styles to this file, and also import other style files */
-@import "../../../node_modules/bootstrap/scss/bootstrap.scss";
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* Base container for the demo */
+.mat-typography {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* Headings */
+h3 {
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+
+/* Form spacing and layout */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Spacing for input and select fields */
+.mat-form-field {
+  width: 100%;
+}
+
+/* Align form controls in rows */
+.d-flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.gap-2 {
+  gap: 8px;
+}
+
+.gap-3 {
+  gap: 16px;
+}
+
+.mt-3 {
+  margin-top: 16px;
+}
+
+/* Responsive layout for form rows */
+@media (min-width: 600px) {
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .col {
+    flex: 1;
+    margin: 8px;
+  }
+
+  .col-auto {
+    flex: 0 0 auto;
+  }
+}
+
+/* Card customizations */
+mat-card {
+  margin-bottom: 16px;
+}
+
+mat-card-header {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+mat-card-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Checkbox styles */
+mat-checkbox {
+  margin-bottom: 8px;
+}
+
+/* Textarea customization for read-only outputs */
+textarea[matInput] {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow: hidden;
+  resize: none;
+}

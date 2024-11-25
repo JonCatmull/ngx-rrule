@@ -1,51 +1,60 @@
-<form [formGroup]="form">
-  <div class="row col-lg-12 form-inline">
-    <label class="mr-2">Repeat every</label>
-    <input
-      aria-label="Repeat interval"
-      class="form-control w-25"
-      value="1"
-      formControlName="interval"
-    />
+<form [formGroup]="form" class="d-flex flex-column gap-3">
+  <!-- Repeat Every -->
+  <div class="d-flex align-items-center gap-3">
+    <label class="mat-body-1">Repeat every</label>
+    <mat-form-field class="w-25">
+      <mat-label>Interval</mat-label>
+      <input
+        matInput
+        type="number"
+        aria-label="Repeat interval"
+        formControlName="interval"
+        placeholder="1"
+      />
+    </mat-form-field>
 
-    <select
-      formControlName="frequency"
-      (change)="onOptionChange()"
-      class="form-control mt-md-0 mt-sm-2"
-    >
-      <option
-        value="Yearly"
-        *ngIf="!frequency || frequency.indexOf('Yearly') !== -1"
+    <mat-form-field class="w-50">
+      <mat-label>Frequency</mat-label>
+      <mat-select
+        formControlName="frequency"
+        (selectionChange)="onOptionChange()"
       >
-        Year
-      </option>
-      <option
-        value="Monthly"
-        *ngIf="!frequency || frequency.indexOf('Monthly') !== -1"
-      >
-        Month
-      </option>
-      <option
-        value="Weekly"
-        *ngIf="!frequency || frequency.indexOf('Weekly') !== -1"
-      >
-        Week
-      </option>
-      <option
-        value="Daily"
-        *ngIf="!frequency || frequency.indexOf('Daily') !== -1"
-      >
-        Day
-      </option>
-      <option
-        value="Hourly"
-        *ngIf="!frequency || frequency.indexOf('Hourly') !== -1"
-      >
-        Hour
-      </option>
-    </select>
+        <mat-option
+          *ngIf="!frequency || frequency.indexOf('Yearly') !== -1"
+          value="Yearly"
+        >
+          Year
+        </mat-option>
+        <mat-option
+          *ngIf="!frequency || frequency.indexOf('Monthly') !== -1"
+          value="Monthly"
+        >
+          Month
+        </mat-option>
+        <mat-option
+          *ngIf="!frequency || frequency.indexOf('Weekly') !== -1"
+          value="Weekly"
+        >
+          Week
+        </mat-option>
+        <mat-option
+          *ngIf="!frequency || frequency.indexOf('Daily') !== -1"
+          value="Daily"
+        >
+          Day
+        </mat-option>
+        <mat-option
+          *ngIf="!frequency || frequency.indexOf('Hourly') !== -1"
+          value="Hourly"
+        >
+          Hour
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
-  <div class="row col mt-1 mb-1">
+
+  <!-- Frequency-Specific Components -->
+  <div class="d-flex flex-column gap-2">
     <ngx-yearly
       *ngIf="form.value.frequency === 'Yearly'"
       formControlName="yearly"

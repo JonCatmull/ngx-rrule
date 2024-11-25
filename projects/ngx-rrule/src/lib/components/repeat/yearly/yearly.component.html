@@ -1,108 +1,117 @@
 <form [formGroup]="form">
-  <div class="row mt-2">
-    <div class="form-inline">
-      <div class="form-group col-lg-12">
-        <input
-          type="radio"
-          aria-label="Repeat yearly on"
-          value="on"
-          formControlName="mode"
-        />
-        <label class="ml-2">on</label>
-        <div formGroupName="on">
-          <select
-            formControlName="month"
-            aria-label="Repeat yearly on month"
-            class="form-control"
-            [attr.disabled]="form.value.mode !== 'on' ? '' : null"
-          >
-            <option value="Jan">Jan</option>
-            <option value="Feb">Feb</option>
-            <option value="Mar">Mar</option>
-            <option value="Apr">Apr</option>
-            <option value="May">May</option>
-            <option value="Jun">Jun</option>
-            <option value="Jul">Jul</option>
-            <option value="Aug">Aug</option>
-            <option value="Sep">Sep</option>
-            <option value="Oct">Oct</option>
-            <option value="Nov">Nov</option>
-            <option value="Dec">Dec</option>
-          </select>
-          <select
-            formControlName="day"
-            aria-label="Repeat yearly on a day"
-            class="form-control"
-            [attr.disabled]="form.value.mode !== 'on' ? '' : null"
-          >
-            <option *ngFor="let val of range(1, 32)" [value]="val.toString()">
-              {{ val }}
-            </option>
-          </select>
+  <!-- "On" Option -->
+  <div class="d-flex flex-column gap-3 mt-3">
+    <mat-radio-group formControlName="mode">
+      <div class="d-flex align-items-center gap-3">
+        <mat-radio-button value="on" aria-label="Repeat yearly on">
+          On
+        </mat-radio-button>
+        <div formGroupName="on" class="d-flex gap-2">
+          <mat-form-field class="w-25">
+            <mat-label>Month</mat-label>
+            <mat-select
+              formControlName="month"
+              [disabled]="form.value.mode !== 'on'"
+              aria-label="Repeat yearly on month"
+            >
+              <mat-option value="Jan">Jan</mat-option>
+              <mat-option value="Feb">Feb</mat-option>
+              <mat-option value="Mar">Mar</mat-option>
+              <mat-option value="Apr">Apr</mat-option>
+              <mat-option value="May">May</mat-option>
+              <mat-option value="Jun">Jun</mat-option>
+              <mat-option value="Jul">Jul</mat-option>
+              <mat-option value="Aug">Aug</mat-option>
+              <mat-option value="Sep">Sep</mat-option>
+              <mat-option value="Oct">Oct</mat-option>
+              <mat-option value="Nov">Nov</mat-option>
+              <mat-option value="Dec">Dec</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="w-25">
+            <mat-label>Day</mat-label>
+            <mat-select
+              formControlName="day"
+              [disabled]="form.value.mode !== 'on'"
+              aria-label="Repeat yearly on a day"
+            >
+              <mat-option
+                *ngFor="let val of range(1, 32)"
+                [value]="val.toString()"
+              >
+                {{ val }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
       </div>
-    </div>
+    </mat-radio-group>
   </div>
-  <div class="row mt-2">
-    <div class="form-inline">
-      <div class="col-md-12 form-group">
-        <input type="radio" value="on the" formControlName="mode" />
-        <label class="ml-2">on the</label>
-        <div formGroupName="onThe">
-          <select
-            formControlName="which"
-            aria-label="Repeat yearly on the which"
-            class="form-control"
-            [attr.disabled]="form.value.mode === 'on' ? '' : null"
-          >
-            <option value="First">First</option>
-            <option value="Second">Second</option>
-            <option value="Third">Third</option>
-            <option value="Fourth">Fourth</option>
-            <option value="Last">Last</option>
-          </select>
 
-          <select
-            formControlName="day"
-            aria-label="Repeat yearly on the day"
-            class="form-control"
-            [attr.disabled]="form.value.mode === 'on' ? '' : null"
-          >
-            <option value="Monday">Monday</option>
-            <option value="Tuesday">Tuesday</option>
-            <option value="Wednesday">Wednesday</option>
-            <option value="Thursday">Thursday</option>
-            <option value="Friday">Friday</option>
-            <option value="Saturday">Saturday</option>
-            <option value="Sunday">Sunday</option>
-            <option value="Day">Day</option>
-            <option value="Weekday">Weekday</option>
-            <option value="Weekend day">Weekend day</option>
-          </select>
-        </div>
-        <label class="ml-1 mr-1">of</label>
-        <div formGroupName="onThe">
-          <select
-            formControlName="month"
-            aria-label="Repeat yearly on the month"
-            class="form-control"
-            [attr.disabled]="form.value.mode === 'on' ? '' : null"
-          >
-            <option value="Jan">Jan</option>
-            <option value="Feb">Feb</option>
-            <option value="Mar">Mar</option>
-            <option value="Apr">Apr</option>
-            <option value="May">May</option>
-            <option value="Jun">Jun</option>
-            <option value="Jul">Jul</option>
-            <option value="Aug">Aug</option>
-            <option value="Sep">Sep</option>
-            <option value="Oct">Oct</option>
-            <option value="Nov">Nov</option>
-            <option value="Dec">Dec</option>
-          </select>
+  <!-- "On the" Option -->
+  <div class="d-flex flex-column gap-3 mt-3">
+    <mat-radio-group formControlName="mode">
+      <div class="d-flex align-items-center gap-3">
+        <mat-radio-button value="on the" aria-label="Repeat yearly on the">
+          On the
+        </mat-radio-button>
+        <div formGroupName="onThe" class="d-flex gap-2">
+          <mat-form-field class="w-25">
+            <mat-label>Which</mat-label>
+            <mat-select
+              formControlName="which"
+              [disabled]="form.value.mode === 'on'"
+              aria-label="Repeat yearly on the which"
+            >
+              <mat-option value="First">First</mat-option>
+              <mat-option value="Second">Second</mat-option>
+              <mat-option value="Third">Third</mat-option>
+              <mat-option value="Fourth">Fourth</mat-option>
+              <mat-option value="Last">Last</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="w-25">
+            <mat-label>Day</mat-label>
+            <mat-select
+              formControlName="day"
+              [disabled]="form.value.mode === 'on'"
+              aria-label="Repeat yearly on the day"
+            >
+              <mat-option value="Monday">Monday</mat-option>
+              <mat-option value="Tuesday">Tuesday</mat-option>
+              <mat-option value="Wednesday">Wednesday</mat-option>
+              <mat-option value="Thursday">Thursday</mat-option>
+              <mat-option value="Friday">Friday</mat-option>
+              <mat-option value="Saturday">Saturday</mat-option>
+              <mat-option value="Sunday">Sunday</mat-option>
+              <mat-option value="Day">Day</mat-option>
+              <mat-option value="Weekday">Weekday</mat-option>
+              <mat-option value="Weekend day">Weekend day</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="w-25">
+            <mat-label>Month</mat-label>
+            <mat-select
+              formControlName="month"
+              [disabled]="form.value.mode === 'on'"
+              aria-label="Repeat yearly on the month"
+            >
+              <mat-option value="Jan">Jan</mat-option>
+              <mat-option value="Feb">Feb</mat-option>
+              <mat-option value="Mar">Mar</mat-option>
+              <mat-option value="Apr">Apr</mat-option>
+              <mat-option value="May">May</mat-option>
+              <mat-option value="Jun">Jun</mat-option>
+              <mat-option value="Jul">Jul</mat-option>
+              <mat-option value="Aug">Aug</mat-option>
+              <mat-option value="Sep">Sep</mat-option>
+              <mat-option value="Oct">Oct</mat-option>
+              <mat-option value="Nov">Nov</mat-option>
+              <mat-option value="Dec">Dec</mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
       </div>
-    </div>
+    </mat-radio-group>
   </div>
 </form>

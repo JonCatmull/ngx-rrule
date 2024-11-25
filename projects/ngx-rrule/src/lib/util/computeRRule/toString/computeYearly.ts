@@ -1,4 +1,4 @@
-import RRule from "rrule";
+import { RRule } from "rrule";
 
 import computeYearlyOn from "./computeYearlyOn";
 import computeYearlyOnThe from "./computeYearlyOnThe";

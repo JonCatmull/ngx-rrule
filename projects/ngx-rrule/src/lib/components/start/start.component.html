@@ -1,14 +1,13 @@
-<form [formGroup]="form" class="form-inline">
-  <label for="inlineFormInputName2" class="mr-1">Start</label>
-  <input
-    type="text"
-    class="form-control mb-2 mr-sm-2"
-    id="inlineFormInputName2"
-    formControlName="startDate"
-    placeholder="Start Date"
-    name="dp"
-    ngbDatepicker
-    #d="ngbDatepicker"
-    (click)="d.toggle()"
-  />
+<form [formGroup]="form" class="d-flex align-items-center gap-2">
+  <mat-form-field class="mb-2">
+    <mat-label>Start Date</mat-label>
+    <input
+      matInput
+      [matDatepicker]="picker"
+      formControlName="startDate"
+      placeholder="Start Date"
+    />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
 </form>

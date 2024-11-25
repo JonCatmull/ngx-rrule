@@ -2,30 +2,37 @@
   <div class="row">
     <div class="form-group col-lg-12">
       <label class="mr-2">Ends</label>
-      <select formControlName="mode" class="form-control">
-        <option value="Never">Never</option>
-        <option value="After">After</option>
-        <option value="On date">On date</option>
-      </select>
+      <mat-form-field class="form-control">
+        <mat-label>Ends</mat-label>
+        <mat-select formControlName="mode">
+          <mat-option value="Never">Never</mat-option>
+          <mat-option value="After">After</mat-option>
+          <mat-option value="On date">On date</mat-option>
+        </mat-select>
+      </mat-form-field>
       <div *ngIf="form.value.mode === 'After'">
         <div class="form-group m-0 row d-flex align-items-center">
-          <input
-            formControlName="after"
-            aria-label="End after"
-            class="form-control ml-2"
-          />
+          <mat-form-field class="form-control ml-2">
+            <mat-label>End after</mat-label>
+            <input matInput formControlName="after" aria-label="End after" />
+          </mat-form-field>
           <label class="ml-1">occurrences</label>
         </div>
       </div>
-      <input
+      <mat-form-field
         *ngIf="form.value.mode == 'On date'"
         class="form-control ml-2"
-        formControlName="endAt"
-        placeholder="yyyy-mm-dd"
-        ngbDatepicker
-        #d="ngbDatepicker"
-        (click)="d.toggle()"
-      />
+      >
+        <mat-label>End date</mat-label>
+        <input
+          matInput
+          formControlName="endAt"
+          [matDatepicker]="picker"
+          placeholder="yyyy-mm-dd"
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
     </div>
   </div>
 </form>

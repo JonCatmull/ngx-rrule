@@ -1,12 +1,15 @@
 <form [formGroup]="weeklyForm">
-  <div class="btn-group btn-group-toggle">
-    <label
-      class="btn-outline-primary btn-circle mr-2"
-      ngbButtonLabel
+  <mat-button-toggle-group
+    multiple
+    class="d-flex flex-wrap gap-2"
+    aria-label="Toggle days of the week"
+  >
+    <mat-button-toggle
       *ngFor="let day of days"
+      [value]="day.toLowerCase()"
+      [formControlName]="day.toLowerCase()"
     >
-      <input type="checkbox" [formControlName]="day.toLowerCase()" ngbButton />
       {{ day }}
-    </label>
-  </div>
+    </mat-button-toggle>
+  </mat-button-toggle-group>
 </form>

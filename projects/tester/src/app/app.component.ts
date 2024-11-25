@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { UntypedFormBuilder, UntypedFormGroup } from "@angular/forms";
 import * as moment from "moment";
+import { timeZones } from "./timezones.const";
 
 @Component({
   selector: "app-root",
@@ -15,11 +16,14 @@ export class AppComponent implements OnInit {
 
   hideStart = false;
   hideEnd = false;
-  timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  timeZone =
+    Intl.DateTimeFormat().resolvedOptions().timeZone || "Europe/London";
+  timeZones = timeZones;
 
   constructor(private formBuilder: UntypedFormBuilder) {}
 
   ngOnInit() {
+    console.log("tz", Intl.DateTimeFormat().resolvedOptions().timeZone);
     const startDate = moment()
       .startOf("month")
       .startOf("day")

@@ -27,7 +27,8 @@ https://kumar-muthu.github.io/ngx-rrule/
 #### Install
 
 ```
- $ npm i ngx-rrule @ng-bootstrap/ng-bootstrap rrule bootstrap
+ $ ng add @angular/material
+ $ npm i @unbroken/ngx-rrule rrule
 ```
 
 #### Import NgxRruleModule in your app:
