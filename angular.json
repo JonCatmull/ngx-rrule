@@ -10,23 +10,27 @@
       "prefix": "ngx",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "tsConfig": "projects/ngx-rrule/tsconfig.lib.json",
             "project": "projects/ngx-rrule/ng-package.json"
-          }
-        ,          "configurations": {
+          },
+          "configurations": {
             "production": {
               "tsConfig": "projects/ngx-rrule/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ngx-rrule/tsconfig.lib.json"
             }
-          }
-},
+          },
+          "defaultConfiguration": "production"
+        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "projects/ngx-rrule/src/test.ts",
             "tsConfig": "projects/ngx-rrule/tsconfig.spec.json",
-            "karmaConfig": "projects/ngx-rrule/karma.conf.js"
+            "karmaConfig": "projects/ngx-rrule/karma.conf.js",
+            "polyfills": ["zone.js", "zone.js/testing"]
           }
         }
       }
@@ -50,9 +54,7 @@
               "projects/tester/src/favicon.ico",
               "projects/tester/src/assets"
             ],
-            "styles": [
-              "projects/tester/src/styles.scss"
-            ],
+            "styles": ["projects/tester/src/styles.scss"],
             "scripts": [],
             "vendorChunk": true,
             "extractLicenses": false,
@@ -115,9 +117,7 @@
             "polyfills": "projects/tester/src/polyfills.ts",
             "tsConfig": "projects/tester/tsconfig.spec.json",
             "karmaConfig": "projects/tester/karma.conf.js",
-            "styles": [
-              "projects/tester/src/styles.css"
-            ],
+            "styles": ["projects/tester/src/styles.css"],
             "scripts": [],
             "assets": [
               "projects/tester/src/favicon.ico",

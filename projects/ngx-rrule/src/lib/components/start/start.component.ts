@@ -7,9 +7,9 @@ import {
 } from "@angular/core";
 import { UntypedFormBuilder, UntypedFormGroup } from "@angular/forms";
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
-import { formatDate } from "../../util/common";
 
 @Component({
+  standalone: false,
   selector: "ngx-start",
   templateUrl: "./start.component.html",
   styleUrls: ["./start.component.css"],

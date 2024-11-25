@@ -9,6 +9,7 @@ import { UntypedFormBuilder, UntypedFormGroup } from "@angular/forms";
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 
 @Component({
+  standalone: false,
   selector: "ngx-yearly",
   templateUrl: "./yearly.component.html",
   styleUrls: ["./yearly.component.css"],

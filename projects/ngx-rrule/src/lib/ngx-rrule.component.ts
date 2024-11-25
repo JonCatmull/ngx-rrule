@@ -17,6 +17,7 @@ import { computeRRule } from "../lib/util/computeRRule/fromString/computeRRule";
 import { formatDate, getDateParts } from "../lib/util/common";
 
 @Component({
+  standalone: false,
   selector: "ngx-rrule",
   templateUrl: "./ngx-rrule.component.html",
   styles: [],
@@ -41,7 +42,7 @@ export class NgxRruleComponent
   private propagateChange;
   constructor(
     private formBuilder: UntypedFormBuilder,
-    private service: NgxRruleService,
+    private service: NgxRruleService
   ) {}
 
   ngOnInit() {
@@ -75,7 +76,7 @@ export class NgxRruleComponent
     this.form.valueChanges.subscribe(() =>
       setTimeout(() => {
         this.onFormChange();
-      }, 100),
+      }, 100)
     );
   }
 

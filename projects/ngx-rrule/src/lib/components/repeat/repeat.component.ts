@@ -14,6 +14,7 @@ import {
 } from "@angular/forms";
 
 @Component({
+  standalone: false,
   selector: "ngx-repeat",
   templateUrl: "./repeat.component.html",
   styleUrls: ["./repeat.component.css"],
@@ -28,7 +29,8 @@ import {
 export class RepeatComponent implements OnInit, ControlValueAccessor {
   @Output() onChange = new EventEmitter();
   public form: UntypedFormGroup;
-  @Input() frequency;
+  @Input() frequency: "Hourly" | "Daily" | "Weekly" | "Monthly" | "Yearly" =
+    "Weekly";
   private propagateChange;
   constructor(private formBuilder: UntypedFormBuilder) {}
 

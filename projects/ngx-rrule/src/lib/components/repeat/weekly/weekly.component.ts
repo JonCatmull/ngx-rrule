@@ -2,17 +2,15 @@ import {
   Component,
   OnInit,
   Output,
-  Input,
   forwardRef,
   EventEmitter,
-  OnChanges,
-  SimpleChanges,
 } from "@angular/core";
 import { UntypedFormBuilder, UntypedFormGroup } from "@angular/forms";
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 import * as _ from "lodash";
 
 @Component({
+  standalone: false,
   selector: "ngx-weekly",
   templateUrl: "./weekly.component.html",
   styleUrls: ["./weekly.component.css"],

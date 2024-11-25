@@ -8,6 +8,7 @@ import {
   NgbModule,
 } from "@ng-bootstrap/ng-bootstrap";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+// import { MatSelectModule } from "@angular/material/select";
 import { EndComponent } from "./components/end/end.component";
 import { RepeatComponent } from "./components/repeat/repeat.component";
 import { WeeklyComponent } from "./components/repeat/weekly/weekly.component";
