@@ -5,12 +5,12 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "lib:build": "ng build --project=ngx-rrule",
+    "lib:build": "ng build --project ngx-rrule",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "deploy": "npm --prefix ./dist/ngx-rrule/ publish --provenance --access public"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "^15.2.10",
     "@angular/cdk": "^15.2.9",
