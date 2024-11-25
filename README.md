@@ -2,7 +2,8 @@
 
 > Recurrence rules generator form control for Angular
 
-> Inspired and partially forked from https://github.com/Fafruch/react-rrule-generator
+> Inspired and partially forked from https://github.com/Fafruch/react-rrule-generator  
+> Forked from [kumar-muthu/ngx-rrule](https://github.com/kumar-muthu/ngx-rrule)
 
 [![Alpha](https://img.shields.io/badge/status-alpha-yellow.svg)](Alpha)
 [![npm version](https://badge.fury.io/js/ngx-rrule.svg)](https://badge.fury.io/js/ngx-rrule)
@@ -10,13 +11,13 @@
 
 ## Description
 
-This is [Angular](https://angular.io/) form control using [Bootstrap](https://github.com/twbs/bootstrap) styling. It's built with the help of a great [rrule.js](https://github.com/jakubroztocil/rrule) library.
+This is an [Angular](https://angular.io/) form control for generating recurrence rules, styled with [Angular Material](https://material.angular.io/). It's built with the help of the powerful [rrule.js](https://github.com/jakubroztocil/rrule) library.
 
 It also uses:
 
 - [lodash](https://github.com/lodash/lodash)
-- [moment](https://github.com/moment/moment)
-- [ng-bootstrap](https://ng-bootstrap.github.io/#/components/datepicker/overview)
+
+This project is a fork of [kumar-muthu/ngx-rrule](https://github.com/kumar-muthu/ngx-rrule), updated to integrate Angular Material for styling and modern UI enhancements.
 
 ## Demo
 
@@ -26,14 +27,14 @@ https://kumar-muthu.github.io/ngx-rrule/
 
 #### Install
 
-```
- $ ng add @angular/material
- $ npm i @unbroken/ngx-rrule rrule
+```bash
+$ ng add @angular/material
+$ npm i @unbroken/ngx-rrule rrule
 ```
 
-#### Import NgxRruleModule in your app:
+#### Import `NgxRruleModule` in your app:
 
-```js
+```ts
 import { NgxRruleModule } from "ngx-rrule";
 
 @NgModule({
@@ -42,23 +43,24 @@ import { NgxRruleModule } from "ngx-rrule";
 export class AppModule {}
 ```
 
-#### style.scss
+#### Global Styles (`styles.scss`)
 
-Optionally, this can be added to styles section of angular.json
+Add Angular Material typography and theming to your styles:
 
-```css
-@import "~bootstrap/dist/css/bootstrap.css";
+```scss
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+@import "@angular/material/core/theming/all-theme";
 ```
 
-#### app.component.html
+#### Example Usage (`app.component.html`)
 
 ```html
 <form [formGroup]="myform">
-  <ngx-rrule formControlName="testRule" [hideStart]="false" [hideEnd]="false" tz="America/New_York" [frequency]="['Daily','Monthly','Weekly', 'Yearly']"></ngx-rrule>
+  <ngx-rrule formControlName="testRule" [hideStart]="false" [hideEnd]="false" tz="America/New_York" [frequency]="['Daily', 'Monthly', 'Weekly', 'Yearly']"></ngx-rrule>
 </form>
 ```
 
-#### app.component.ts
+#### Example Component (`app.component.ts`)
 
 ```ts
 import { Component, OnInit } from "@angular/core";
@@ -71,6 +73,7 @@ import { FormBuilder, FormGroup } from "@angular/forms";
 })
 export class AppComponent implements OnInit {
   myform: FormGroup;
+
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
@@ -94,47 +97,25 @@ export class AppComponent implements OnInit {
 
 ### Options
 
-<table>
-    <!-- why, markdown... -->
-    <thead>
-        <tr>
-            <th>Option</th>
-            <th>Description</th>
-        </tr>
-        <thead>
-        <tbody>
-            <tr>
-                <td><code>hideStart</code></td>
-                <td>
-                    <p>(optional) Hides the start date part in the form.Defaults to <code>false</code></p>
-                </td>
-            </tr>
-            <tr>
-                <td><code>hideEnd</code></td>
-                <td>
-                    <p>(optional) Hides the until(end) date part in the form.Defaults to <code>false</code></p>
-                </td>
-            </tr>
-            <tr>
-                <td><code>frequency</code></td>
-                <td>
-                  <p>(required) One or many of the following recurrence options</p>
-                  <ul>
-                      <li><code>Daily</code></li>
-                      <li><code>Weekly</code></li>
-                      <li><code>Monthly</code></li>
-                      <li><code>Yearly</code></li>
-                  </ul>
-                </td>
-            </tr> 
-            <tr>
-                <td><code>tz</code></td>
-                <td>
-                    <p>(optional) Timezone. Defaults to local timezone</p>
-                </td>
-            </tr>
-        </tbody>
-</table>
+| Option      | Description                                                                                                   |
+| ----------- | ------------------------------------------------------------------------------------------------------------- |
+| `hideStart` | (optional) Hides the start date part in the form. Defaults to `false`.                                        |
+| `hideEnd`   | (optional) Hides the until (end) date part in the form. Defaults to `false`.                                  |
+| `frequency` | (required) Specifies one or more of the following recurrence options: `Daily`, `Weekly`, `Monthly`, `Yearly`. |
+| `tz`        | (optional) Sets the timezone. Defaults to the local timezone.                                                 |
+
+---
+
+## Features
+
+- **Angular Material Styling**: Fully integrated with Angular Material for consistent, modern UI.
+- **Dynamic Recurrence Options**: Supports `Daily`, `Weekly`, `Monthly`, and `Yearly` recurrence frequencies.
+- **Timezone Support**: Configure timezone for recurrence rules.
+
+## Credit
+
+- Forked from [kumar-muthu/ngx-rrule](https://github.com/kumar-muthu/ngx-rrule)
+- Inspired by [Fafruch/react-rrule-generator](https://github.com/Fafruch/react-rrule-generator)
 
 ## License
 

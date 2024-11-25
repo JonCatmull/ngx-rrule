@@ -23,7 +23,6 @@ export class AppComponent implements OnInit {
   constructor(private formBuilder: UntypedFormBuilder) {}
 
   ngOnInit() {
-    console.log("tz", Intl.DateTimeFormat().resolvedOptions().timeZone);
     const startDate = moment()
       .startOf("month")
       .startOf("day")
