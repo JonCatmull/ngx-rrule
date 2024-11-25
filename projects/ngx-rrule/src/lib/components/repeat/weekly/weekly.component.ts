@@ -31,13 +31,7 @@ export class WeeklyComponent implements OnInit, ControlValueAccessor {
 
   ngOnInit() {
     this.weeklyForm = this.formBuilder.group({
-      mon: false,
-      tue: false,
-      wed: false,
-      thu: false,
-      fri: false,
-      sat: false,
-      sun: false,
+      days: [],
       weeklyInterval: 0,
     });
 
@@ -52,7 +46,9 @@ export class WeeklyComponent implements OnInit, ControlValueAccessor {
 
   writeValue = (input: any): void => {
     this.weeklyForm.patchValue({
-      ...input.days,
+      days: Object.entries(input.days || {})
+        .filter(([_, value]) => Boolean(value))
+        .map(([key]) => key),
       weeklyInterval: input.interval,
     });
   };
@@ -66,12 +62,21 @@ export class WeeklyComponent implements OnInit, ControlValueAccessor {
   onFormChange = () => {
     if (this.propagateChange) {
       const value = {
-        interval: 0,
-        days: [],
+        interval: this.weeklyForm.value.weeklyInterval ?? 0,
+        days: {
+          mon: false,
+          tue: false,
+          wed: false,
+          thu: false,
+          fri: false,
+          sat: false,
+          sun: false,
+        },
       };
 
-      value.interval = this.weeklyForm.value.weeklyInterval;
-      value.days = _.omit(this.weeklyForm.value, ["weeklyInterval"]);
+      this.weeklyForm.value.days.forEach((day) => {
+        value.days[day] = true;
+      });
       this.propagateChange(value);
       this.onChange.emit();
     }
