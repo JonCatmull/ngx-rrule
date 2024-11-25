@@ -1,6 +1,6 @@
 {
-  "name": "@unbroken-ltd/ngx-rrule",
-  "version": "0.1.2",
+  "name": "@unbroken-ltd/ngx-mat-rrule",
+  "version": "0.1.3",
   "repository": {
     "type": "git",
     "url": "https://github.com/JonCatmull/ngx-rrule.git"
