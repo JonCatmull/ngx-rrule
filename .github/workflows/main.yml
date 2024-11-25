@@ -16,7 +16,7 @@ jobs:
           node-version: "18.20.4"
           registry-url: "https://registry.npmjs.org"
       - run: npm ci
-      - run: ng build --project ngx-rrule --configuration=production
+      - run: npm run lib:build -- --configuration=production
       - run: npm --prefix ./dist/ngx-rrule/ publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
