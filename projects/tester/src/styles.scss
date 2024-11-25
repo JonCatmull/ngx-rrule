@@ -59,6 +59,11 @@ form {
   margin-top: 16px;
 }
 
+.w-100 {
+  width: 100%;
+  flex-grow: 1;
+}
+
 /* Responsive layout for form rows */
 @media (min-width: 600px) {
   .row {
