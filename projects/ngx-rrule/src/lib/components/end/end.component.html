@@ -5,9 +5,9 @@
       <mat-form-field class="form-control">
         <mat-label>Ends</mat-label>
         <mat-select formControlName="mode">
-          <mat-option value="Never">Never</mat-option>
-          <mat-option value="After">After</mat-option>
-          <mat-option value="On date">On date</mat-option>
+          <mat-option [value]="mode" *ngFor="let mode of endModes">{{
+            mode
+          }}</mat-option>
         </mat-select>
       </mat-form-field>
       <div *ngIf="form.value.mode === 'After'">
@@ -29,6 +29,7 @@
           formControlName="endAt"
           [matDatepicker]="picker"
           placeholder="yyyy-mm-dd"
+          [max]="maxEndDate"
         />
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>

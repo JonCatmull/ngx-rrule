@@ -7,7 +7,6 @@ import {
 } from "@angular/core";
 import { UntypedFormBuilder, UntypedFormGroup } from "@angular/forms";
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
-import * as _ from "lodash";
 
 @Component({
   standalone: false,

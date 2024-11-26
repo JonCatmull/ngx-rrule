@@ -20,6 +20,8 @@ export class AppComponent implements OnInit {
     Intl.DateTimeFormat().resolvedOptions().timeZone || "Europe/London";
   timeZones = timeZones;
 
+  maxEndDate = new Date(2025, 0, 5);
+
   constructor(private formBuilder: UntypedFormBuilder) {}
 
   ngOnInit() {
@@ -28,7 +30,7 @@ export class AppComponent implements OnInit {
       .startOf("day")
       .format("YYYYMMDD");
     const endDate = moment().endOf("month").endOf("day").format("YYYYMMDD");
-    this.testRule = `DTSTART:${startDate}T000000 RRULE:FREQ=MONTHLY;INTERVAL=2;BYSETPOS=-1;BYDAY=-1MO;UNTIL=${endDate}T000000`;
+    this.testRule = `DTSTART:${startDate}T000000 RRULE:FREQ=WEEKLY;INTERVAL=2;BYSETPOS=-1;BYDAY=-1MO;UNTIL=${endDate}T000000`;
     this.form = this.formBuilder.group({
       testRule: this.testRule,
     });

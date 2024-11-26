@@ -37,6 +37,8 @@ export class NgxRruleComponent
   @Input() startAt;
   @Input() endAt;
   @Input() frequency;
+  @Input() endModes = ["Never", "After", "On date"];
+  @Input() maxEndDate: Date = null; // todo refactor
   @Input() tz;
   public form: UntypedFormGroup;
   private propagateChange;
@@ -83,7 +85,7 @@ export class NgxRruleComponent
   writeValue = (input: any): void => {
     const config: any = {};
     const configureFrequency = () =>
-      config.repeat ? config.repeat[0] : "Yearly";
+      config.repeat ? config.repeat[0] : "Weekly";
     const configureYearly = () => config.yearly || "on";
     const configureMonthly = () => config.monthly || "on";
     const configureEnd = () => (config.end ? config.end[0] : "Never");

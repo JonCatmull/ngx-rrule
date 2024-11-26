@@ -4,6 +4,7 @@ import {
   Output,
   forwardRef,
   EventEmitter,
+  Input,
 } from "@angular/core";
 import { UntypedFormBuilder, UntypedFormGroup } from "@angular/forms";
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
@@ -22,6 +23,8 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
   ],
 })
 export class EndComponent implements OnInit, ControlValueAccessor {
+  @Input() endModes = ["Never", "After", "On date"];
+  @Input() maxEndDate: Date = null; // todo refactor
   @Output() onChange = new EventEmitter();
   public form: UntypedFormGroup;
   private propagateChange;

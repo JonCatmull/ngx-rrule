@@ -5,7 +5,7 @@ import {
   forwardRef,
   EventEmitter,
 } from "@angular/core";
-import { UntypedFormBuilder, UntypedFormGroup } from "@angular/forms";
+import { FormBuilder, FormGroup } from "@angular/forms";
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 
 @Component({
@@ -23,10 +23,10 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 })
 export class MonthlyComponent implements OnInit, ControlValueAccessor {
   @Output() onChange = new EventEmitter();
-  public form: UntypedFormGroup;
+  public form: FormGroup;
   private propagateChange;
 
-  constructor(private formBuilder: UntypedFormBuilder) {}
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.form = this.formBuilder.group({
@@ -68,7 +68,7 @@ export class MonthlyComponent implements OnInit, ControlValueAccessor {
   };
 
   radioChange = (event) => {
-    if (event.target.value === "on the") {
+    if (event.target.value === "on-the") {
       this.form.patchValue({
         onDay: "",
       });
