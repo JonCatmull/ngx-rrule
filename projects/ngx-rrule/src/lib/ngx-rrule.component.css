@@ -1,0 +1,73 @@
+.ngx-rrule {
+  /* Spacing for input and select fields */
+  .mat-form-field {
+    width: 100%;
+  }
+
+  /* Align form controls in rows */
+  .d-flex {
+    display: flex;
+  }
+
+  .align-items-center {
+    align-items: center;
+  }
+
+  .flex-column {
+    flex-direction: column;
+  }
+
+  .gap-2 {
+    gap: 8px;
+  }
+
+  .gap-3 {
+    gap: 16px;
+  }
+
+  .mt-3 {
+    margin-top: 16px;
+  }
+
+  .w-100 {
+    width: 100%;
+    flex-grow: 1;
+  }
+
+  /* Responsive layout for form rows */
+  @media (min-width: 600px) {
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .col {
+      flex: 1;
+      margin: 8px;
+    }
+
+    .col-auto {
+      flex: 0 0 auto;
+    }
+  }
+
+  /* Card customizations */
+  mat-card {
+    margin-bottom: 16px;
+  }
+
+  mat-card-header {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  mat-card-title {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  /* Checkbox styles */
+  mat-checkbox {
+    margin-bottom: 8px;
+  }
+}

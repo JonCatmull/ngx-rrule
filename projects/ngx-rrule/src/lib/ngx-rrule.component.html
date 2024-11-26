@@ -1,4 +1,4 @@
-<form [formGroup]="form">
+<form [formGroup]="form" class="ngx-rrule">
   <ngx-start *ngIf="hideStart === false" formControlName="start"></ngx-start>
   <br *ngIf="hideStart === false" />
   <ngx-repeat formControlName="repeat" [frequency]="frequency"></ngx-repeat>

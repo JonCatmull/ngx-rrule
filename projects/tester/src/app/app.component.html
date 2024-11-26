@@ -1,5 +1,5 @@
 <div class="mat-typography">
-  <h3 class="mt-3">Angular RRule Control - Demo</h3>
+  <h1 class="mt-3 mat-h1">Angular RRule Control - Demo</h1>
 
   <!-- Input Card -->
   <mat-card>
@@ -30,7 +30,7 @@
             [hideStart]="hideStart"
             [hideEnd]="hideEnd"
             [tz]="timeZone"
-            [frequency]="['Weekly']"
+            [frequency]="['Weekly', 'Monthly', 'Yearly']"
             [endModes]="['On date', 'After']"
             [maxEndDate]="maxEndDate"
           ></ngx-rrule>

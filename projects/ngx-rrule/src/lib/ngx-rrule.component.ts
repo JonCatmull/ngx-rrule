@@ -5,6 +5,7 @@ import {
   OnChanges,
   OnInit,
   SimpleChanges,
+  ViewEncapsulation,
 } from "@angular/core";
 import {
   ControlValueAccessor,
@@ -20,7 +21,7 @@ import { formatDate, getDateParts } from "../lib/util/common";
   standalone: false,
   selector: "ngx-rrule",
   templateUrl: "./ngx-rrule.component.html",
-  styles: [],
+  styleUrls: ["./ngx-rrule.component.css"],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -28,6 +29,7 @@ import { formatDate, getDateParts } from "../lib/util/common";
       multi: true,
     },
   ],
+  encapsulation: ViewEncapsulation.None,
 })
 export class NgxRruleComponent
   implements OnInit, OnChanges, ControlValueAccessor
