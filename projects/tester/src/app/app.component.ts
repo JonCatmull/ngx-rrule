@@ -20,7 +20,8 @@ export class AppComponent implements OnInit {
     Intl.DateTimeFormat().resolvedOptions().timeZone || "Europe/London";
   timeZones = timeZones;
 
-  maxEndDate = new Date(2025, 0, 5);
+  private readonly _currentYear = new Date().getFullYear();
+  readonly maxEndDate = new Date(this._currentYear + 1, 11, 31);
 
   constructor(private formBuilder: UntypedFormBuilder) {}
 
