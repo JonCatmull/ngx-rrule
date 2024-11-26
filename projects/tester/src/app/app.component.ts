@@ -43,7 +43,6 @@ export class AppComponent implements OnInit {
 
   rruleChange(e) {
     const rrule = e.target.value;
-    console.log(rrule);
     this.form.patchValue({
       testRule: rrule,
     });
